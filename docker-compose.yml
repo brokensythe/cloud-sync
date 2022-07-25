@@ -1,0 +1,27 @@
+version: '3'
+services:
+  front-end:
+    image: "cloud-sync-frontend"
+    working_dir: /home/node/app
+    container_name: front-end
+    build: ./cloud-sync-frontend
+    volumes:
+      - ./cloud-sync-frontend:/home/node/app
+    ports:
+      - 3000:3000
+    command: "npm start"
+
+  server:
+    image: "cloud-sync-backend"
+    container_name: back-end
+    build: ./cloud-sync-backend
+    ports:
+      - 5000:5000
+    volumes:
+      - ./cloud-sync-backend:/code
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=cloud-sync.py
+      - FLASK_RUN_HOST=0.0.0.0
+    command: "flask run"
+
