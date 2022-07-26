@@ -26,5 +26,19 @@ services:
       - FLASK_APP=cloud-sync.py
       - FLASK_RUN_HOST=0.0.0.0
       - FRONTEND_URL=${FRONTEND_URL}
+      - DATABASE_URL=${DATABASE_URL}
     command: "flask run"
 
+  db:
+    image: postgres:latest
+    container_name: DB
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  
+  adminer:
+    image: adminer
+    container_name: adminer_container
+    ports:
+      - 8080:8080
