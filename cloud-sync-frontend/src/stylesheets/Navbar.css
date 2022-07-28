@@ -1,0 +1,19 @@
+.navbar {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+}
+
+.links {
+    display: grid;
+    place-self: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+h1 {
+    display: grid;
+    place-self: start;
+    align-self: center;
+}

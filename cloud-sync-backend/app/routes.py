@@ -1,5 +1,5 @@
 from app import instance
-from flask import render_template
+from flask import render_template, request
 from flask_cors import cross_origin
 
 @instance.route('/')
@@ -12,3 +12,7 @@ def index():
 @cross_origin()
 def test():
     return {'data' : 'Hello World'}
+
+@instance.route('/signup', methods=['POST'])
+def signup():
+    return request.json['email']
